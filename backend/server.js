@@ -6,6 +6,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const messageRoutes = require('./routes/messages');
+const authRoutes = require('./routes/auth');
 const chatSockets = require('./sockets/chat');
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 
 // Socket.io setup
