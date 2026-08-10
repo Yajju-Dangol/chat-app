@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { Platform } from 'react-native';
 
-// For Android emulator, use 10.0.2.2 instead of localhost
-// For iOS simulator, use localhost
-// For physical device on same network, use your machine's local IP (e.g., 192.168.1.10)
-export const API_URL = Platform.OS === 'android' ? 'http://10.0.2.2:3000' : 'http://localhost:3000';
+// Production: Render hosted backend
+// For local development, replace with: 'http://localhost:3000' (or 'http://10.0.2.2:3000' for Android emulator)
+export const API_URL = 'https://chat-app-lm6u.onrender.com';
 
 const api = axios.create({
   baseURL: API_URL,
