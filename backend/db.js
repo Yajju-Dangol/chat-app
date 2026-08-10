@@ -64,6 +64,7 @@ const db = {
     };
     
     if (supabase) {
+      console.log('Attempting to insert message:', { sender_username, recipient_username, content, status });
       const { data, error } = await supabase
         .from('messages')
         .insert([{ 
@@ -76,9 +77,10 @@ const db = {
         .single();
         
       if (error) {
-        console.error('Error inserting message:', error);
+        console.error('Error inserting message:', JSON.stringify(error, null, 2));
         throw error;
       }
+      console.log('Message saved successfully:', data);
       return data;
     } else {
       mockMessages.push(newMessage);

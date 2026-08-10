@@ -1,4 +1,6 @@
-require('dotenv').config({ path: '../.env' }); // Load .env from root if it exists
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') }); // Load .env from root
+require('dotenv').config(); // Also try local .env as fallback
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
